@@ -131,16 +131,20 @@ boolean[] temp = new boolean[3];
 
 	}
 	
+	//Collaborated with Keon
 	public String ruleTableString(char falseSymbol, char trueSymbol) {
 		
-		char[] h = new char[8];
+		char[] holder = new char[8];
 
         for (int i = 0; i < 8; i++) {
+        	
             if(rules[8-i-1] == false) {
-                h[i] = falseSymbol;
+            	
+                holder[i] = falseSymbol;
             }
             else {
-                h[i] = trueSymbol;
+            	
+                holder[i] = trueSymbol;
             }
         }
 		
@@ -180,8 +184,10 @@ boolean[] temp = new boolean[3];
 		
 		StringJoiner rj = new StringJoiner("   ");
 		
-		String output = sj.toString() + System.lineSeparator() + " " + h[0] + " " + " "  + " " + h[1] + " " + " " + " " + h[2] + " " + " " + " " + h[3] + " " + " " + " " + h[4] + " "
-                + " " + " " + h[5] + " " + " " + " " + h[6] + " " + " " + " " + h[7] + " " ;
+		
+		String output = sj.toString() + System.lineSeparator() + " " + holder[0] + " " + " "  + " " + holder[1] + " " + " " + " " + holder[2] + " " + " " + " " + holder[3] + " " + " " + " " + holder[4] + " "
+                + " " + " " + holder[5] + " " + " " + " " + holder[6] + " " + " " + " " + holder[7] + " " ;
+		
 		return output;
 	}
 }
