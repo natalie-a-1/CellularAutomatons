@@ -88,7 +88,7 @@ public class ElementaryRule extends Rule {
 	
 	public boolean[] getNeighborhood(int idx, Generation gen) {
 		
-boolean[] temp = new boolean[3];
+		boolean[] temp = new boolean[3];
 		
 		// circular boundaries
 		
@@ -181,10 +181,6 @@ boolean[] temp = new boolean[3];
 		sj.add(sixth);
 		sj.add(seventh);
 		sj.add(eighth);
-		
-	//TRY TO FIX JOINER BELOW
-		
-		//StringJoiner rj = new StringJoiner("   ");
 		
 		
 		String output = sj.toString() + System.lineSeparator() + " " + holder[0] + " " + " "  + " " + holder[1] + " " + " " + " " + holder[2] + " " + " " + " " + holder[3] + " " + " " + " " + holder[4] + " "
