@@ -137,10 +137,10 @@ boolean[] temp = new boolean[3];
 
         for (int i = 0; i < 8; i++) {
             if(rules[8-i-1] == false) {
-                h[i] = trueSymbol;
+                h[i] = falseSymbol;
             }
             else {
-                h[i] = falseSymbol;
+                h[i] = trueSymbol;
             }
         }
 		
