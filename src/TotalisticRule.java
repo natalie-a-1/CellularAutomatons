@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class TotalisticRule extends Rule {
@@ -29,18 +30,96 @@ public class TotalisticRule extends Rule {
 		}
 	}
 
+	//collaborated with Keon
 	@Override
 	public boolean[] getNeighborhood(int idx, Generation gen) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		boolean[] temp = new boolean[5];
+        if (idx - 2 == -1) {
+            temp[0] = gen.getState(gen.size()-1);
+            temp[1] = gen.getState(0);
+            temp[2] = gen.getState(1);
+            temp[3] = gen.getState(2);
+            temp[4] = gen.getState(3);
+        }
+        else if (idx - 1 == -1) {
+            temp[0] = gen.getState(gen.size()-2);
+            temp[1] = gen.getState(gen.size()-1);
+            temp[2] = gen.getState(idx);
+            temp[3] = gen.getState(idx+1);
+            temp[4] = gen.getState(idx+2);
+        }
+        else if (idx + 2 == gen.size()) {
+            temp[0] = gen.getState(idx-2);
+            temp[1] = gen.getState(idx-1);
+            temp[2] = gen.getState(idx);
+            temp[3] = gen.getState(idx+1);
+            temp[4] = gen.getState(0);
+        }
+        else if (idx + 1 == gen.size()) {
+            temp[0] = gen.getState(idx-2);
+            temp[1] = gen.getState(idx-1);
+            temp[2] = gen.getState(idx);
+            temp[3] = gen.getState(0);
+            temp[4] = gen.getState(1);
+        }
+        else {
+            temp[0] = gen.getState(idx-2);
+            temp[1] = gen.getState(idx-1);
+            temp[2] = gen.getState(idx);
+            temp[3] = gen.getState(idx+1);
+            temp[4] = gen.getState(idx+2);
+        }
+        return temp;
 	}
 
+	//Recived help on evolve method from Keon
 	@Override
 	public boolean evolve(boolean[] neighborhood) {
-		// TODO Auto-generated method stub
-		return false;
+
+		boolean output = false;
+        
+        int counter = 0;
+        
+        for (int i = 0; i < neighborhood.length; i++) {
+        	
+            if (neighborhood[i] == true) {
+            	
+                counter++;
+            }
+        }
+        if (counter == 0) {
+        	
+            output = false;
+            
+        }
+        else if (counter == 1) {
+        	
+            output = true;
+            
+        }
+        else if (counter == 2) {
+        	
+            output = true;
+            
+        }
+        else if (counter == 3) {
+        	
+            output = false;
+        }
+        else if (counter == 4) {
+        	
+            output = true;
+        }
+        else if (counter == 5) {
+        	
+            output = false;
+        }
+        return output;
+
 	}
 
+	//collaborated with Keon on rule table
 	@Override
 	public String ruleTableString(char falseSymbol, char trueSymbol) {
 		
