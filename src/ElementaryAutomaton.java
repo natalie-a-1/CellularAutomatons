@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ElementaryAutomaton extends Automaton{
 
@@ -7,10 +9,9 @@ public class ElementaryAutomaton extends Automaton{
 
 	}
 	
-//	protected ElementaryAutomaton(File filename) {
-//		
-//		
-//	}
+	protected ElementaryAutomaton(File filename) {
+		
+	}
 
 	@Override
 	protected Rule createRule(int ruleNum) {
