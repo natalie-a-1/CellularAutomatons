@@ -16,9 +16,13 @@ public abstract class Automaton {
 	protected Automaton(int ruleNum, Generation initial) {
 
 		generations.add(initial);
+		
+		Rule rule = new Rule(ruleNum);
 
-		rule = Rule(ruleNum);
-	}
+		rule = getRuleNum();
+	
+		
+		}
 	
 
 	protected Automaton(String filename) throws IOException {
@@ -95,6 +99,7 @@ public abstract class Automaton {
 	}
 
 	public int getRuleNum() {
+		
 
 		return rule.getRuleNum();
 	}
