@@ -7,29 +7,28 @@ import java.util.StringJoiner;
 
 public abstract class Automaton {
 
-	private Rule rule;
+	private Rule rule; // = new Rule();
 	private ArrayList<Generation> generations = new ArrayList<Generation>();
 	public char falseSymbol = '0';
 	public char trueSymbol = '1';
 	
 	
-	protected Automaton(int ruleNum, Generation initial) {
+	protected Automaton(int ruleNum, Generation initial) throws RuleNumException {
 
 		generations.add(initial);
 		
-		Rule rule = new Rule(ruleNum);
 
-		rule = getRuleNum();
+		rule = createRule(ruleNum);
 	
 		
 		}
 	
 
-	protected Automaton(String filename) throws IOException {
+	protected Automaton(String filename) throws IOException, RuleNumException {
 		
 		Scanner sc = new Scanner(new File(filename));
 		
-        rule = new Rule(sc.nextInt());
+		rule = createRule(sc.nextInt());
         
         falseSymbol = sc.next().charAt(0);
         
@@ -46,14 +45,32 @@ public abstract class Automaton {
 	}
 	
 	public String ruleTableString() {
-		return null;
+		
+		return rule.ruleTableString(falseSymbol, trueSymbol);
 		
 	}
 	
-	protected abstract Rule createRule(int ruleNum);
+	protected abstract Rule createRule(int ruleNum) throws RuleNumException;
 	
-	public Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) {
-		return null;
+	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) throws RuleNumException {
+		
+		if (ca == null) {
+			
+			return null;
+
+		} else if (ca == CellularAutomaton.ECA) {
+			
+			return new ElementaryAutomaton(ruleNum, initial);
+			
+		} else if  (ca == CellularAutomaton.TCA) {
+			
+			return new TotalisticAutomaton(ruleNum, initial);
+			
+		} else {
+			
+			return null;
+			
+		}
 		
 		
 	}
@@ -100,7 +117,6 @@ public abstract class Automaton {
 
 	public int getRuleNum() {
 		
-
 		return rule.getRuleNum();
 	}
 
