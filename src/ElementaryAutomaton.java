@@ -1,5 +1,13 @@
 import java.io.IOException;
 
+/**
+ * This method creates an Elementary Automaton by extending the 
+ * parent Automaton class.
+ * 
+ * @author Natalie Hill
+ *
+ */
+
 public class ElementaryAutomaton extends Automaton {
 
 	protected ElementaryAutomaton(int ruleNum, Generation initial) throws RuleNumException {
