@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 
 public abstract class Automaton {
 
-	private Rule rule; // = new Rule();
+	private Rule rule;
 	private ArrayList<Generation> generations = new ArrayList<Generation>();
 	public char falseSymbol = '0';
 	public char trueSymbol = '1';
