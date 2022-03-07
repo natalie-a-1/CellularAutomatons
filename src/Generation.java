@@ -111,7 +111,7 @@ public class Generation {
 	 * 
 	 * @param states     A String of cellState values
 	 * @param trueSymbol symbol that represents a true value
-	 */
+	 */ 
 
 	// Generation (states,trueSymbol) is from Keon
 	public Generation(String states, char trueSymbol) {

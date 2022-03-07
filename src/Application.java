@@ -21,13 +21,18 @@ public class Application {
 	private String[] appArgs;
 	
 	public Application(String[] args)  {
-		// TODO: Validate the number of arguments passed 
-		// and set the appArgs variable.
+
+		validateNumArgs(args);
+		
+		appArgs = args;
 	}
 
 	private void validateNumArgs(String[] args) {
-		// TODO: Validate the number of arguments and throw an exception
-		// if they do not match the expected amount.
+
+		if (args.length != NUM_EXPECTED_ARGS) {
+			
+			throwRuntimeExceptionWithUsageMessage();
+		}
 	}
 
 	private void throwRuntimeExceptionWithUsageMessage() {
@@ -55,21 +60,69 @@ public class Application {
 				.toString()
 				.startsWith("jar");
 	}
+	
 
 	private void parseArgs(String[] args) {
-		// TODO: Parse each of the six arguments, construct the appropriate 
+		//Parse each of the six arguments, construct the appropriate 
 		// Automaton, and print out the full evolution to System.out. 
 		// Refer to the README for details on exception handling.
+		try {
+			
+			//assigning variables
+			CellularAutomaton ca = CellularAutomaton.parse(args[0]);
+			
+			int ruleNum = Integer.parseInt(args[1]);
+			
+			char falseSymbol = args[2].charAt(0);
+			
+			char trueSymbol = args[3].charAt(0);
+			
+			String gen = args[4];
+			
+			int num_evolutions = Integer.parseInt(args[5]);
+			
+			//creating objects
+			Generation initial = new Generation(gen, trueSymbol);
+				
+			Automaton automaton = Automaton.createAutomaton(ca, ruleNum, initial);
+			
+			automaton.evolve(num_evolutions);
+				
+				System.out.println(automaton);
+			
+		} catch (Exception e) {
+			
+			throw new RuntimeException(e.getMessage());
+			
+		}
 	}
-
 	public void run() {
-		// TODO: Call the parseArgs method using the previously 
-		// given arguments.
+
+		
+		parseArgs(appArgs);
 	}
 
 	public static void main(String[] args) {
-		// TODO: Construct and run an Application using the 
-		// supplied main method arguments. Refer to the README
-		// for details on RuntimeException handling.
+		
+	try {
+		
+		Application temp = new Application(args);
+		
+		temp.run();
+		
+		
+	} catch (Exception RuntimeException) {
+		
+		System.err.println(RuntimeException.getMessage());
+		
+
+	}
+	}
+		
+		
+
+
+	private static void Application(String[] args) {
+
 	}
 }
