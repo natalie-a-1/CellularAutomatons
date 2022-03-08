@@ -56,6 +56,7 @@ public class ElementaryRule extends Rule {
 	 * @param neighborhood a boolean array of cell a neighborhood's cell states
 	 * @return the state of the next cell given the rule
 	 */
+	
 
 	public boolean evolve(boolean[] neighborhood) {
 

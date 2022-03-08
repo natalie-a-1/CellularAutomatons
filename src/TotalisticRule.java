@@ -50,38 +50,7 @@ public class TotalisticRule extends Rule {
 	@Override
 	public boolean[] getNeighborhood(int idx, Generation gen) {
 
-		boolean[] temp = new boolean[5];
-		if (idx - 2 == -1) {
-			temp[0] = gen.getState(gen.size() - 1);
-			temp[1] = gen.getState(0);
-			temp[2] = gen.getState(1);
-			temp[3] = gen.getState(2);
-			temp[4] = gen.getState(3);
-		} else if (idx - 1 == -1) {
-			temp[0] = gen.getState(gen.size() - 2);
-			temp[1] = gen.getState(gen.size() - 1);
-			temp[2] = gen.getState(idx);
-			temp[3] = gen.getState(idx + 1);
-			temp[4] = gen.getState(idx + 2);
-		} else if (idx + 2 == gen.size()) {
-			temp[0] = gen.getState(idx - 2);
-			temp[1] = gen.getState(idx - 1);
-			temp[2] = gen.getState(idx);
-			temp[3] = gen.getState(idx + 1);
-			temp[4] = gen.getState(0);
-		} else if (idx + 1 == gen.size()) {
-			temp[0] = gen.getState(idx - 2);
-			temp[1] = gen.getState(idx - 1);
-			temp[2] = gen.getState(idx);
-			temp[3] = gen.getState(0);
-			temp[4] = gen.getState(1);
-		} else {
-			temp[0] = gen.getState(idx - 2);
-			temp[1] = gen.getState(idx - 1);
-			temp[2] = gen.getState(idx);
-			temp[3] = gen.getState(idx + 1);
-			temp[4] = gen.getState(idx + 2);
-		}
+		boolean[] temp = getNeighborhoodByRadius(idx, 2, gen);
 		return temp;
 	}
 
@@ -110,25 +79,27 @@ public class TotalisticRule extends Rule {
 		}
 		if (counter == 0) {
 
-			output = false;
+			output = rules[0];
 
 		} else if (counter == 1) {
 
-			output = true;
+			output = rules[1];
 
 		} else if (counter == 2) {
 
-			output = true;
+			output = rules[2];
 
 		} else if (counter == 3) {
 
-			output = false;
+			output = rules[3];
+			
 		} else if (counter == 4) {
 
-			output = true;
+			output =rules[4];
+			
 		} else if (counter == 5) {
 
-			output = false;
+			output = rules[5];
 		}
 		return output;
 
