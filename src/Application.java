@@ -82,6 +82,9 @@ public class Application {
 			Generation initial = new Generation(gen, trueSymbol);
 
 			Automaton automaton = Automaton.createAutomaton(ca, ruleNum, initial);
+			
+			automaton.falseSymbol = falseSymbol;
+			automaton.trueSymbol = trueSymbol;
 
 			automaton.evolve(num_evolutions);
 
@@ -104,7 +107,7 @@ public class Application {
 	}
 	
 	/**
-	 * This is th emain method which executes the program.
+	 * This is the main method which executes the program.
 	 * 
 	 * @param args	is a list of features which determine the creation of the Automaton and Application
 	 */
