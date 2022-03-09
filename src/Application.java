@@ -1,4 +1,11 @@
-
+/**
+ * This is the Application class that takes in information from 
+ * previous classes and uses this information to display the full
+ * automaton. 
+ * 
+ * @author nataliehill
+ *
+ */
 public class Application {
 
 	private static final int NUM_EXPECTED_ARGS = 6;
