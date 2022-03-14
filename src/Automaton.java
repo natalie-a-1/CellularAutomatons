@@ -17,7 +17,17 @@ public abstract class Automaton {
 
 	private Rule rule;
 	private ArrayList<Generation> generations = new ArrayList<Generation>();
+	
+	/**
+	 * This is a character that represents the values 'false'.
+	 */
+	
 	public char falseSymbol = '0';
+	
+	/**
+	*This is a character that represents the values 'true'.
+	*/
+	
 	public char trueSymbol = '1';
 
 	protected Automaton(int ruleNum, Generation initial) throws RuleNumException {

@@ -7,7 +7,16 @@
 
 public enum CellularAutomaton {
 
+	/**
+	 * This is an ELementary Cellular Automaton.
+	 */
+	
 	ECA,
+	
+	/**
+	 * This is an Totalistic Cellular Automaton.
+	 */
+	
 	TCA;
 	
 	/**

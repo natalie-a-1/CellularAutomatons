@@ -9,6 +9,10 @@ import java.util.StringJoiner;
  */
 
 public class TotalisticRule extends Rule {
+	
+	/**
+	 * This is an array of true and/or false values depending on which rule is chosen.
+	 */
 
 	public boolean rules[] = new boolean[6];
 
